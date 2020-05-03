@@ -3,8 +3,6 @@ name: Publish to test environment
 on:
   push:
     branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
 
 jobs:
   build:
@@ -29,34 +27,18 @@ jobs:
       run: dotnet build --configuration Release --no-restore src/Sotsera.Cdn/Sotsera.Cdn.csproj
     - name: Publish
       run: dotnet publish --configuration Release --no-restore -o ./publish src/Sotsera.Cdn/Sotsera.Cdn.csproj
-#    - name: Test
-#      run: dotnet test --no-restore --verbosity normal
     - name: Update the published assets for this environment
       run: | 
         mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4/
         rm -rf gh-pages/blazor/3.2.0-rc1.20223.4
-        mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4/wasm
-        cp -r publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4/wasm
+        mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4
+        cp -r publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4
         ls -la gh-pages/blazor/3.2.0-rc1.20223.4
-#        cd gh-pages
-#        git add -A .
-#        git commit -m "version 3.2.0-rc1.20223.4"
-#        git push origin gh-pages
-#        cd publish/wwwroot
-#        mv -v index.gh-pages.html index.html
-#        for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll\b/.wasm/g'`"; done
-#        sed -i 's/\.dll"/.wasm"/g' _framework/blazor.boot.json
-#    - name: Install SSH Client 🔑
-#      uses: webfactory/ssh-agent@v0.2.0
-#      with:
-#        ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY_KEY_TEST }}
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         GIT_CONFIG_EMAIL: ghidello@users.noreply.github.com
-#        COMMIT_MESSAGE: Publish the test site
         CLEAN: true
-#        REPOSITORY_NAME: ghidello/teamops-test
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: gh-pages # The folder the action should deploy.
+        BRANCH: gh-pages
+        FOLDER: gh-pages

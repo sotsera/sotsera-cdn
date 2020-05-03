@@ -35,7 +35,7 @@ jobs:
       run: | 
         mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4
         rm -rf gh-pages/blazor/3.2.0-rc1.20223.4
-        cp publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4
+        cp -r publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4
         ls -la gh-pages/blazor/3.2.0-rc1.20223.4
 #        cd publish/wwwroot
 #        mv -v index.gh-pages.html index.html

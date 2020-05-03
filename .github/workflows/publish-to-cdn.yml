@@ -29,11 +29,9 @@ jobs:
       run: dotnet publish --configuration Release --no-restore -o ./publish src/Sotsera.Cdn/Sotsera.Cdn.csproj
     - name: Update the published assets for this environment
       run: | 
-        mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4/
-        rm -rf gh-pages/blazor/3.2.0-rc1.20223.4
-        mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4
-        cp -r publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4
-        ls -la gh-pages/blazor/3.2.0-rc1.20223.4
+        mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4-v2
+        rm -rf gh-pages/blazor/3.2.0-rc1.20223.4-v2
+        cp -r publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4-v2
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:

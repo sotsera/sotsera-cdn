@@ -50,8 +50,8 @@ jobs:
 #      uses: webfactory/ssh-agent@v0.2.0
 #      with:
 #        ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY_KEY_TEST }}
-#    - name: Deploy 🚀
-#      uses: JamesIves/github-pages-deploy-action@releases/v3
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         GIT_CONFIG_EMAIL: ghidello@users.noreply.github.com

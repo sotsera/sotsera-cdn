@@ -39,6 +39,8 @@ jobs:
         cp -r publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4/wasm
         ls -la gh-pages/blazor/3.2.0-rc1.20223.4
         cd gh-pages
+        git add -A .
+        git commit -m "version 3.2.0-rc1.20223.4"
         git push origin gh-pages
 #        cd publish/wwwroot
 #        mv -v index.gh-pages.html index.html

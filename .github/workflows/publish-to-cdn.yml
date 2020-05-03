@@ -38,10 +38,10 @@ jobs:
         mkdir -p gh-pages/blazor/3.2.0-rc1.20223.4/wasm
         cp -r publish/wwwroot/_framework/wasm gh-pages/blazor/3.2.0-rc1.20223.4/wasm
         ls -la gh-pages/blazor/3.2.0-rc1.20223.4
-        cd gh-pages
-        git add -A .
-        git commit -m "version 3.2.0-rc1.20223.4"
-        git push origin gh-pages
+#        cd gh-pages
+#        git add -A .
+#        git commit -m "version 3.2.0-rc1.20223.4"
+#        git push origin gh-pages
 #        cd publish/wwwroot
 #        mv -v index.gh-pages.html index.html
 #        for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll\b/.wasm/g'`"; done
@@ -52,11 +52,11 @@ jobs:
 #        ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY_KEY_TEST }}
 #    - name: Deploy 🚀
 #      uses: JamesIves/github-pages-deploy-action@releases/v3
-#      with:
-#        SSH: true
-#        GIT_CONFIG_EMAIL: ghidello@users.noreply.github.com
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GIT_CONFIG_EMAIL: ghidello@users.noreply.github.com
 #        COMMIT_MESSAGE: Publish the test site
-#        CLEAN: true
+        CLEAN: true
 #        REPOSITORY_NAME: ghidello/teamops-test
-#        BRANCH: master # The branch the action should deploy to.
-#        FOLDER: publish/wwwroot # The folder the action should deploy.
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: gh-pages # The folder the action should deploy.
